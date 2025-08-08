@@ -1,8 +1,8 @@
-
-
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from app.auth import create_access_token
+from jose import jwt
+from datetime import datetime, timedelta
+from app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 import sqlite3
 from passlib.hash import bcrypt
 
@@ -21,6 +21,14 @@ def get_user_by_email(email: str):
     if row:
         return {"id": row[0], "email": row[1], "hashed_password": row[2]}
     return None
+
+# Função utilitária para criar o token de acesso
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
 
 @router.post("/login")
 def login(data: LoginRequest):

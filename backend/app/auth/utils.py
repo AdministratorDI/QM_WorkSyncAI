@@ -12,8 +12,12 @@ from app.auth.utils import (
     verify_totp_token
 )
 
+
 # Função para obter utilizador pelo email (da camada de dados)
 from app.database import get_user_by_email  # Supondo que esta função exista
+
+# Importação das variáveis de configuração (.env)
+from app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
 # Criação do router para rotas de autenticação com 2FA
 auth_router = APIRouter()
