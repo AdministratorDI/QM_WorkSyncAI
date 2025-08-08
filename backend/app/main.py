@@ -3,8 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app import models
 from app.routers import workflows, logs, suggestions
-from app.routes import notification
-from app.routes import auth
+from app.routes import notification, auth
 
 # Inicialização da aplicação
 app = FastAPI(

@@ -1,13 +1,11 @@
-
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List
 
-from backend.database.database import SessionLocal
-from backend.database.models.log import Log
-from backend.database.schemas.log import LogRead
+from app.database.database import SessionLocal
+from app.database.models.log import Log
+from app.database.schemas.log import LogRead
 
 router = APIRouter(
     prefix="/logs",

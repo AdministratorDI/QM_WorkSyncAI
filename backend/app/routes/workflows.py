@@ -1,14 +1,11 @@
-
-
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List
 
-from backend.database.database import SessionLocal
-from backend.database.models.workflow import Workflow, Step
-from backend.database.schemas.workflow import WorkflowCreate, WorkflowRead
+from app.database.database import SessionLocal
+from app.database.models.workflow import Workflow, Step
+from app.database.schemas.workflow import WorkflowCreate, WorkflowRead
 import uuid
 from datetime import datetime
 

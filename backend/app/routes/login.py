@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from jose import jwt
 from datetime import datetime, timedelta
-from app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
+from ..config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 import sqlite3
 from passlib.hash import bcrypt
 
@@ -47,8 +47,6 @@ from datetime import datetime, timedelta
 from fastapi import Request
 import os
 
-SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key")
-ALGORITHM = "HS256"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 class RegisterRequest(BaseModel):
