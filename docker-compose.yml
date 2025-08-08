@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:14
+    container_name: worksync_db
+    restart: always
+    environment:
+      POSTGRES_USER: worksync_user
+      POSTGRES_PASSWORD: worksync_pass
+      POSTGRES_DB: worksync_ai_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    container_name: worksync_backend
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: worksync_frontend
+    ports:
+      - "80:80"
+
+volumes:
+  pgdata:

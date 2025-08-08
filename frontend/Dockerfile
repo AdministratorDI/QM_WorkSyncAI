@@ -1,0 +1,3 @@
+# Dockerfile frontend
+FROM node:18
+...

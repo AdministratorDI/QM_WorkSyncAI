@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50 min-h-screen font-sans text-gray-900;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+:root {
+  --color-primary: #1D4ED8; /* azul WorkSync AI */
+  --color-secondary: #1E40AF; /* azul escuro */
+  --color-accent: #60A5FA; /* azul claro */
+  --color-text: #111827; /* cinza quase preto */
+  --color-background: #F9FAFB; /* cinza muito claro */
+}
+
+.btn {
+  @apply rounded px-4 py-2 font-medium transition focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  @apply btn hover:bg-blue-600 focus:ring-blue-500;
+}
